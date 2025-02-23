@@ -1,4 +1,4 @@
-package com.example.userprofileservice.controller;
+package com.vasvass.user_profile_service;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
