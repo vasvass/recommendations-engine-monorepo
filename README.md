@@ -53,10 +53,10 @@ Deliver recommendations for products, articles, or media content as a SaaS. Clie
 	•	Kafka is strong for real-time stream processing if you plan to evolve into near-real-time recommendations.
 
 2.6 Machine Learning / Recommendation Algorithms
-	•	Java-based libraries (e.g., Mahout, DL4J) if you want to stay purely in the Java ecosystem.
+	•	Java-based libraries (e.g., Mahout, DL4J) in the Java ecosystem.
 	•	Alternatively, Python microservice (e.g., Flask or FastAPI container) for ML:
 	•	The Java services can call this via REST gRPC.
-	•	Allows you to use Python’s mature ecosystem (NumPy, Pandas, scikit-learn, PyTorch, TensorFlow) for recommendation tasks.
+	•	Allows dto use Python’s mature ecosystem (NumPy, Pandas, scikit-learn, PyTorch, TensorFlow) for recommendation tasks.
 
 2.7 Security & Multi-Tenancy
 	•	Spring Security with JWT (JSON Web Tokens):

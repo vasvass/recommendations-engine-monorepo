@@ -1,0 +1,41 @@
+services:
+  # PostgreSQL Database
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user_profile_db
+    ports:
+      - "5432:5432"
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: user_profile_db
+
+  # User Profile Service
+  user-profile-service:
+    build: 
+      context: ./user-profile-service
+      dockerfile: Dockerfile
+    container_name: user-profile-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+      - mongodb
+    environment:
+      # Spring Boot properties overrides
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/user_profile_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+      SPRING_DATA_MONGODB_HOST: mongodb
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: user_profile_db
