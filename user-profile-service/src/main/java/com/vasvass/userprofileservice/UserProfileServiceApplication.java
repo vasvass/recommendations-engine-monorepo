@@ -1,4 +1,4 @@
-package com.vasvass.user_profile_service;
+package com.vasvass.userprofileservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

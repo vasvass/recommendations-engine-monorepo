@@ -1,4 +1,4 @@
-package com.vasvass.user_profile_service;
+package com.vasvass.userprofileservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,10 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                    // Permit all access to /hello
-                    .requestMatchers("/hello").permitAll()
+                    // Permit all access to the root URL "/" and the user registration URL "/api/users"
+                    .requestMatchers("/api/users/**").permitAll() 
                     // Everything else requires authentication
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
                 )
                 // Enable form login (or remove if you don't want it)
                 .formLogin(Customizer.withDefaults())
