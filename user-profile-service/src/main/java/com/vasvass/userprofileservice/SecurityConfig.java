@@ -11,16 +11,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
+         http
+                .authorizeHttpRequests(authorize -> authorize
                     // Permit all access to the root URL "/" and the user registration URL "/api/users"
-                    .requestMatchers("/api/users/**").permitAll() 
-                    // Everything else requires authentication
-                    .anyRequest().permitAll()
+                    .requestMatchers("/public//**").permitAll() 
+                      // Protect the recommendation endpoints
+                    .requestMatchers("/api/recommendations/**").authenticated()
+                    .anyRequest().authenticated()
                 )
+                //Initiate OAuth2 login flow in a web app:
+                .oauth2Login(Customizer.withDefaults());
                 // Enable form login (or remove if you don't want it)
-                .formLogin(Customizer.withDefaults())
-                .build();
+                return http.build();
     }
 }
