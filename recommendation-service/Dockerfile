@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 
 # Set working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
 # Create non-root user
-RUN addgroup --system spring && adduser --system spring --ingroup spring
+RUN groupadd -r spring && useradd -r -g spring spring
 USER spring:spring
 
 # Expose port
