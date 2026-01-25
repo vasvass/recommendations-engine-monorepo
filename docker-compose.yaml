@@ -39,3 +39,45 @@ services:
       SPRING_DATA_MONGODB_HOST: mongodb
       SPRING_DATA_MONGODB_PORT: 27017
       SPRING_DATA_MONGODB_DATABASE: user_profile_db
+
+      # Keycloak properties   
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.2
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin123
+    command: ["start-dev"]
+    ports:
+      - "8081:8080"
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+
+  # Recommendation Service
+  recommendation-service:
+    build: 
+      context: ./recommendation-service
+      dockerfile: Dockerfile
+    container_name: recommendation-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mongodb
+      - redis
+      - user-profile-service
+    environment:
+      # Spring Boot properties overrides
+      SPRING_DATA_MONGODB_HOST: mongodb
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: recommendation_db
+      
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      
+      USER_PROFILE_SERVICE_URL: http://user-profile-service:8080/api/users
+      PRODUCT_CATALOG_SERVICE_URL: http://product-catalog-service:8083/api/products
