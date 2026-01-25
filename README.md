@@ -1,6 +1,24 @@
 # recommendations-engine
 Deliver recommendations for products, articles, or media content as a SaaS. Clients can integrate the recommendation API with their own applications to get personalized suggestions for their users.
 
+## Current State
+- Implemented: `user-profile-service` (MongoDB-backed CRUD for users)
+- Not yet implemented: recommendation service, ingestion/processing, catalog, auth service
+
+## Local Run (User Profile Service)
+1. Start dependencies with Docker:
+   - `docker compose up -d`
+2. Run the service:
+   - `cd user-profile-service`
+   - `./mvnw spring-boot:run`
+
+### API Endpoints
+- `GET /api/users`
+- `GET /api/users/{id}`
+- `POST /api/users`
+- `PUT /api/users/{id}`
+- `DELETE /api/users/{id}`
+
 1. High-Level Architecture
 
 1.1 Microservices Overview
