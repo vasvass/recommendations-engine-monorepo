@@ -1,4 +1,4 @@
-package com.vasvass.userprofileservice;
+package com.vasvass.catalogservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
