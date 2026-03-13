@@ -2,7 +2,9 @@ package com.vasvass.userprofileservice.service;
 
 import com.vasvass.userprofileservice.model.User;
 import com.vasvass.userprofileservice.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,17 +31,13 @@ public class UserService {
     }
 
     public User updateUser(String id, User userDetails) {
-        Optional<User> existingUser = userRepository.findById(id);
-        if (existingUser.isPresent()) {
-            User user = existingUser.get();
-            user.setUsername(userDetails.getUsername());
-            user.setEmail(userDetails.getEmail());
-            user.setTenantId(userDetails.getTenantId());
-            return userRepository.save(user);
-        } else {
-            // Or throw an exception, or handle gracefully
-            return null;
-        }
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found: " + id));
+        user.setUsername(userDetails.getUsername());
+        user.setEmail(userDetails.getEmail());
+        user.setTenantId(userDetails.getTenantId());
+        user.setPreferences(userDetails.getPreferences());
+        return userRepository.save(user);
     }
 
     public void deleteUser(String id) {
