@@ -1,0 +1,11 @@
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/RecommendationServiceApplication.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/controller/AdminController.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/controller/RecommendationController.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/model/Recommendation.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/model/RecommendedItem.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/model/UserInteraction.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/repository/RecommendationRepository.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/repository/UserInteractionRepository.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/service/AlgorithmService.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/service/ExternalServiceClient.java
+/Users/vassileiosvassileiades/Documents/Development/recommendations-engine-monorepo/recommendation-service/src/main/java/com/vasvass/recommendationservice/service/RecommendationService.java
