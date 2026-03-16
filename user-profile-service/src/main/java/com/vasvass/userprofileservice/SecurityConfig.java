@@ -12,10 +12,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
          http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                    // Permit all access to the root URL "/" and the user registration URL "/api/users"
-                    .requestMatchers("/public//**").permitAll() 
-                      // Protect the recommendation endpoints
+                    // Permit access to static UI resources
+                    .requestMatchers("/", "/index.html", "/css/**", "/js/**").permitAll()
+                    // Permit all access to user management API and public paths
+                    .requestMatchers("/public/**").permitAll()
+                    .requestMatchers("/api/users/**").permitAll()
+                    // Protect the recommendation endpoints
                     .requestMatchers("/api/recommendations/**").authenticated()
                     .anyRequest().authenticated()
                 )
